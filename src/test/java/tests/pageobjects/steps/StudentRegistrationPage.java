@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class StudentRegistrationPage {
     private SelenideElement pageHeader = $x("//div[text()='Practice Form']"),
-                    firstNameInput = $x("//div[text()='Practice Form']");
+                    firstNameInput = $x("//input[@id='firstName']");
 
     public void  checkPageHeader (String value) {
         pageHeader.shouldHave(text(value));
