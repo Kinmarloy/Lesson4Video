@@ -1,17 +1,22 @@
-package tests;
+package tests.demoQA.pageobjects;
 
+import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
+import tests.TestBase;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
+import static utils.RandomUtils.*;
 
-public class Lesson4 extends TestBase {
+public class Lesson4WithFaker extends TestBase {
 
-    String firstName = "Petrov",
-            lastName = "Petr",
-            userEmail = "petr@prtr.tu",
+    Faker faker = new Faker();
+
+    String firstName = faker.name().firstName(),
+            lastName = faker.name().lastName(),
+            userEmail = faker.internet().emailAddress(),
             gender = "Female", //Male , Other
-            userNumber = "0123456789",
+            userNumber = faker.phoneNumber().subscriberNumber(10),
             dateOfBirthDay = "7",
             dateOfBirthMonth = "September",
             dateOfBirthYear = "1990",
@@ -22,12 +27,13 @@ public class Lesson4 extends TestBase {
             hobbies2 = "Reading",
             hobbies3 = "Music",
             picture = "1.jpg",
-            currentAddress = "Gomel",
+            currentAddress = faker.address().fullAddress(),
             state = "Haryana",
             city = "Panipat";
 
     @Test
     void RegistrastionForm(){
+
 
         open("https://demoqa.com/automation-practice-form");
 
